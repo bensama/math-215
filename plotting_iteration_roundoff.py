@@ -78,7 +78,7 @@ def fact(n):
 """**Problem 4**"""
 
 # Replace the value -1 with your approximation to the root of f(x), correct to 12 decimal places.
-root = 1.61767578125
+root = 1.79128784747792
 
 """**Problem 5**"""
 
@@ -102,8 +102,8 @@ def newtons_method(starting_guess, n):
 def integration(m):
     E_m = 1 - (1/np.exp(1))
 
-    for i in range(m):
-        E_m = 1 - i*E_m
+    for i in range(1, m + 1):
+      E_m = 1 - (i*E_m)
 
     return E_m
 
