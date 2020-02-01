@@ -59,48 +59,51 @@ def jacobi1_iteration(x,y):
 # Performs n iterations of the Jacobi method on system (1) with starting estimate (0,0).
 
 def jacobi1_method(n):
-    x_n=0
-    y_n=0
-    
-    for i in range(n - 1):
-        a = jacobi1_iteration(x_n,y_n)
+    x_n = 0
+    y_n = 0
 
-    b = [x_n,y_n]
-    return a
+    for i in range(n):
+        [x_n, y_n] = jacobi1_iteration(x_n, y_n)
+
+    return [x_n, y_n]
 
 """**Problem 4**"""
 
 # Replace the values of 0 with the values you solved for in Problem 4.
 
-n_var1=0    
+n_var1=2   
 
-n_var2=0
+n_var2=6
 
 """**Problem 5**"""
 
 # Performs one iteration of the Gauss-Seidel method for system (1) applied to the point (x,y).
 
-def gs1_iteration(x,y): 
-    # Put your code here.
-    return # Your return statement should return a list of the form [new_x,new_y]
+def gs1_iteration(x, y):
+    x = (1/7)*(6 + y)
+    y = (1/5)*(x + 4)
+
+    return [x, y]
 
 """**Problem 6**"""
 
 # Performs n iterations of the Gauss-Seidel method on system (1) with starting estimate (0,0).
 
-def gs1_method(n): 
-    x_n=0
-    y_n=0
-    # Put your code here.
-    return # Your return statement should return a list of the form [x_n,y_n]
+def gs1_method(n):
+    x_n = 0
+    y_n = 0
+
+    for i in range(n):
+      [x_n, y_n] = gs1_iteration(x_n, y_n)
+    return [x_n, y_n]
 
 """**Problem 7**"""
 
 # Replace the values of 0 with the values you solved for in Problem 7.
 
-n_var3=0    
+n_var3=2    
 
-n_var4=0
+n_var4=4
 
 """**Problem 8**"""
 
@@ -108,9 +111,9 @@ import numpy as np
 
 # Finds the error of the nth approximation of the solution to system (1) using the Gauss-Seidel method.
 
-def gs1_error(n): 
-    # Put your code here.
-    return # Put your return statement here.
+def gs1_error(n):
+    a = np.linalg.norm(np.array([x_val, y_val]) - np.array(gs1_method(n)))
+    return a
 
 # The following code will construct your plot of gs1_error for you.  You don't need to change anything in this cell, simply execute it. Consider this one a freebie.
 
@@ -145,8 +148,9 @@ plt.show()
 # Gives one iteration of the Gauss-Seidel method for system (4) applied to the point (x,y).
 
 def gs2_iteration(x,y): 
-    # Put your code here.
-    return # Your return statement should return a list of the form [new_x,new_y]
+    new_x = (1 + y)
+    new_y = (5 - (2*new_x))
+    return [new_x,new_y]
   
 
   
@@ -156,8 +160,9 @@ def gs2_iteration(x,y):
 def gs2_method(n): 
     x_n=0
     y_n=0
-    # Put your code here.
-    return # Your return statement should return a list of the form [x_n,y_n]
+    for i in range(n):
+        [x_n,y_n] = gs2_iteration(x_n,y_n)
+    return [x_n,y_n]
   
   
   
@@ -165,8 +170,8 @@ def gs2_method(n):
 # Finds the error of the nth approximation of the solution to system (4) using the Gauss-Seidel method.
 
 def gs2_error(n): 
-    # Put your code here.
-    return # Put your return statement here.
+    a = np.linalg.norm(np.array(gs2_iteration(0,0)) - np.array(gs2_method(n)))
+    return a
 
 # The following code will construct your plot of gs2_error for you.  You don't need to change anything in this cell, simply execute it. Consider this one another freebie.
 
@@ -187,20 +192,24 @@ plt.show()
 # Gives one iteration of the Gauss-Seidel method for the final system, applied to the point (x,y,z).
 
 def gs3_iteration(x,y,z): 
-    # Put your code here.
-    return # Your return statement should return a list of the form [new_x,new_y,new_z]
+    new_x = ((2*y) - (3*z) - 8) / 5
+    new_y = (102 + (4*z) - new_x) / 4
+    new_z = ((2*new_x) + (2*new_y) - 90) / 4
+    return [new_x,new_y,new_z]
   
 
   
   
 # Performs n iterations of the Gauss-Seidel method on the final system with starting estimate (0,0,0).
 
-def gs3_method(n): 
-    x_n=0
-    y_n=0
-    z_n=0
-    # Put your code here.
-    return # Your return statement should return a list of the form [x_n,y_n,z_n]
+def gs3_method(n):
+    x_n = 0
+    y_n = 0
+    z_n = 0
+
+    for i in range(n):
+      [x_n,y_n,z_n] = gs3_iteration(x_n,y_n,z_n)
+    return [x_n,y_n,z_n]
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
