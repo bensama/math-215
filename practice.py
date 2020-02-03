@@ -1,62 +1,15 @@
-import numpy as np
+import numpy as np 
 
-def f(x):
-    return x**2 + x - 5
 
-x = 0
-y = 2
-z = 12
-
-def bisect(a, b, n):
-    for i in range(n):
-        d = (a + b) / 2
-
-        if (f(d) < 0):
-            a = d
-        else:
-            b = d
-    return d
+def first_column_zeros(A):
+    B=np.copy(A)
     
-w = bisect(x, y, z)
+    for i in range(1, 3):
+        B[i,:] = A[i,:]-(A[i,0]/A[0,0])
+    return B
 
-print (w, f(w))
+X = np.array([[1,1,1],[1,4,2],[4,7,8]])
+y = np.array([1,3,9])
+A=np.array([[2,1,3,1],[1,2,-1,2.5],[4,2,-1,1]])
 
-
-"""
-
-def samesign(a, b):
-        return a * b > 0
-
-
-def bisect(func, low, high):
-
-    assert not samesign(func(low), func(high))
-
-    for i in range(54):
-        midpoint = (low + high) / 2.0
-        if samesign(func(low), func(midpoint)):
-            low = midpoint
-        else:
-            high = midpoint
-
-    return midpoint
-
-def f(x):
-    return x**2 + x - 5
-
-x = bisect(f, 0, 2)
-print (x, f(x))
-
-
-
-def integration(m):
-    E_m = 1 - (1/np.exp(1))
-
-    for i in range(1, m):
-      E_m = 1 - (i*E_m)
-
-    return E_m
-
-"""
-
-
+print(first_column_zeros(A))
