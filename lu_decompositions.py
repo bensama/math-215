@@ -48,24 +48,34 @@ def augment(A,b):
 
 """**Problem 2**"""
 
+
 def first_column_zeros(A):
-  B=np.copy(A)
-  # Put your code here.
-  return # Put your return value here.
+    B = np.copy(A)
+    for i in range(len(A)):
+        if (i != 0):
+            B[i, :] = A[i, :] - (A[0, :]*(A[i, 0]/A[0, 0]))
+    return B
 
 """**Problem 3**"""
 
-def row_echelon(A,b): 
-  # Put your code here.
-  return # Put your return value here.
+def row_echelon(A, b):
+    B = augment(A, b)
+    for i in range(len(B)):
+        B[i:, i:] = first_column_zeros(B[i:, i:])
+    return B
 
 """**Problem 4**"""
 
 def LU_decomposition(A):
-  U=np.copy(A)
-  L=np.identity(len(A))
-  # Put your code here.
-  return L,U # We've included the return values for you, though your function needs to define them correctly.
+    m, n = np.shape(A)
+    U = np.copy(A)
+    L = np.identity(len(A))
+
+    for j in range(0, n):
+        for i in range(j+1, m):
+            L[i, j] = (U[i, j]/U[j, j])
+            U[i, :] = U[i, :] - (L[i, j]*U[j, :])
+    return L, U
 
 """**Problem 5**"""
 
