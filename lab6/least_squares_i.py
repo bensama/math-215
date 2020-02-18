@@ -24,17 +24,17 @@ except ImportError:
 
 # Enter your first and last names in between the quotation marks.
 
-first_name="Your first name goes here"
+first_name="Ben"
 
-last_name="Your last name goes here"
+last_name="Paine"
 
 # Enter your Math 215 section number in between the quotation marks. 
 
-section_number="Your Math 215 section number goes here"  
+section_number="005"  
 
 # Enter your BYU NetID in between the quotation marks.  NOT YOUR BYU ID NUMBER! 
 
-BYUNetID="Your BYU NetID goes here"
+BYUNetID="bpaine"
 
 """**Import NumPy**"""
 
@@ -44,29 +44,29 @@ import numpy as np
 
 # Replace the values of 0 with the NumPy arrays from Problem 1.
 
-X1=0    
+X1 = np.array([[1, 5], [1, 10], [1, 15], [1, 20], [1, 25], [1, 30], [1, 35], [1, 40], [1, 45], [1, 50]])
 
-Y1=0
+Y1 = np.array([[3.33], [4.43], [4.39], [5.23], [5.67], [6.06], [7.01], [7.16], [8.03], [8.78]])
 
 """**Problem 2**"""
 
 # Replace the values of 0 with the normal equation coefficient matrix and normal equation right-hand side respectively from Problem 2.
 
-normal_coef1=0    
+normal_coef1= np.array([[10, 275], [275, 9625]])    
 
-normal_vect1=0
+normal_vect1= np.array([[60.09], [1887.05]])
 
 """**Problem 3**"""
 
 # Replace the value of 0 with the least squares solution beta1 you found in Problem 3.
 
-beta1=0
+beta1 = np.array([[2.88133333], [0.11373333]])
 
 # Define a function whose graph is the line of best fit.
 
-def ls1_line(x): 
-  # Put your code here.
-  return # Put your return value here.
+def ls1_line(x):
+  y = beta1[0] + (beta1[1]*x)
+  return y
 
 import matplotlib.pyplot as plt
 
@@ -78,33 +78,33 @@ def create_plots1():
 
 # Replace the value of 0 with your prediction of the satellite's velocity at t=60.
 
-pred1=0
+pred1=9.7033333
 
 """**Problem 4**"""
 
 # Replace the values of 0 with the NumPy arrays from Problem 4.
 
-X2=0    
+X2= np.array([[5, 5**2],[10, 10**2],[15, 15**2],[20, 20**2],[25, 25**2],[30, 30**2],[35, 35**2],[40, 40**2],[45, 45**2],[50, 50**2]])
 
-Y2=0
+Y2= np.array([[20.57],[87.48],[197.45],[347.67],[546.12],[784.35],[1066.02],[1390.97],[1761.85],[2177.34]])
 
 """**Problem 5**"""
 
 # Replace the values of 0 with the normal equation coefficient matrix and normal equation right-hand side, and least squares solution from Problem 5.
 
-normal_coef2=0    
+normal_coef2 = np.array([[9625, 378125],[378125, 15833125]])
 
-normal_vect2=0 
+normal_vect2 = np.array([[329176.05],[13782519.25]])
 
-beta2=0
+beta2 = np.array([[0.03934604], [0.8695467]])
 
 """**Problem 6**"""
 
 # Define a function whose graph is the parabola of best fit.
 
-def ls2_par(x): 
-  # Put your code here.
-  return # Put your return value here.
+def ls2_par(x):
+  y = (beta2[0]*x) + (beta2[1]*(x**2))
+  return y
 
 # Construct your plot of ls2_par and the corresponding data points here. Put all of your code to create the plots inside the function below.
 
@@ -114,7 +114,7 @@ def create_plots2():
 
 # Replace the value of 0 with your prediction of the satellite's position at t=60.
 
-pred2=0
+pred2 = 3132.72886747
 
 """**Problem 7**"""
 
