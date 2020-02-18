@@ -79,15 +79,27 @@ def LU_decomposition(A):
 
 """**Problem 5**"""
 
-def forward_substitution(L,b): # Accepts a lower triangular square matrix L and a vector b, solves Ly=b for y.
-  # Put your code here.
-  return # Put your return value here.
+
+def forward_substitution(L, b):
+    n = len(b)
+    y = np.array(b)
+
+    for i in range(0, n-1):
+        y[i] = b[i] - (np.dot(y, L[i, :])/L[i, i])
+
+    return y
 
 """**Problem 6**"""
 
-def back_substitution(U,y):    # Accepts an upper triangular square matrix U and a vector b, solves Ux=b for x.
-  # Put your code here.
-  return # Put your return value here.
+
+def back_substitution(U, y):
+    n = len(y)
+    x = np.array(y)
+
+    for i in range(n-1, 0):
+        x[i] = y[i] - (np.dot(x, U[i, :])/U[i, i])
+
+    return x
 
 """**Problem 7**"""
 
