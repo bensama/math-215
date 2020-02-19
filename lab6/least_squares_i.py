@@ -52,15 +52,15 @@ Y1 = np.array([3.33, 4.43, 4.39, 5.23, 5.67, 6.06, 7.01, 7.16, 8.03, 8.78])
 
 # Replace the values of 0 with the normal equation coefficient matrix and normal equation right-hand side respectively from Problem 2.
 
-normal_coef1= np.array([[10, 275], [275, 9625]])    
+normal_coef1 = np.array(np.matmul(np.transpose(X1), X1))
 
-normal_vect1 = np.array([60.09, 1887.05])
+normal_vect1 = np.array(np.matmul(np.transpose(X1), Y1))
 
 """**Problem 3**"""
 
 # Replace the value of 0 with the least squares solution beta1 you found in Problem 3.
 
-beta1 = np.array([2.88133333, 0.11373333])
+beta1 = np.linalg.solve(normal_coef1, normal_vect1)
 
 # Define a function whose graph is the line of best fit.
 
@@ -78,7 +78,7 @@ def create_plots1():
 
 # Replace the value of 0 with your prediction of the satellite's velocity at t=60.
 
-pred1=9.7033333
+pred1=ls1_line(60)
 
 """**Problem 4**"""
 
@@ -92,11 +92,11 @@ Y2= np.array([20.57,87.48,197.45,347.67,546.12,784.35,1066.02,1390.97,1761.85,21
 
 # Replace the values of 0 with the normal equation coefficient matrix and normal equation right-hand side, and least squares solution from Problem 5.
 
-normal_coef2 = np.array([[9625, 378125],[378125, 15833125]])
+normal_coef2 = np.array(np.matmul(np.transpose(X2), X2))
 
-normal_vect2 = np.array([329176.05, 13782519.25])
+normal_vect2 = np.array(np.matmul(np.transpose(X2), Y2))
 
-beta2 = np.array([[0.03934604], [0.8695467]])
+beta2 = np.linalg.solve(normal_coef2, normal_vect2)
 
 """**Problem 6**"""
 
@@ -114,33 +114,33 @@ def create_plots2():
 
 # Replace the value of 0 with your prediction of the satellite's position at t=60.
 
-pred2 = 3132.72886747
+pred2 = ls2_par(60)
 
 """**Problem 7**"""
 
 # Replace the values of 0 with the NumPy arrays from Problem 7.
 
-X3=0    
+X3=np.array([[1, np.log(87.77)], [1, np.log(224.70)], [1, np.log(365.25)], [1, np.log(686.95)], [1, np.log(4332.62)], [1, np.log(10759.2)]])
 
-Y3=0
+Y3 = np.array([np.log(0.389), np.log(0.724), np.log(1), np.log(1.524), np.log(5.2), np.log(9.510)])
 
 # Replace the values of 0 with the normal equation coefficient matrix and normal equation right-hand side from Problem 7.
 
-normal_coef3=0    
+normal_coef3 = np.array(np.matmul(np.transpose(X3), X3))
 
-normal_vect3=0
+normal_vect3 = np.array(np.matmul(np.transpose(X3), Y3))
 
 # Replace the value of 0 with the least squares solution from Problem 7.
 
-beta3=0
+beta3 = np.linalg.solve(normal_coef3, normal_vect3)
 
 """**Problem 8**"""
 
 # Replace the values of 0 with your predictions for the semi-major axes of Uranus and Neptune.
 
-pred_Uran=0 
+pred_Uran = ((10**beta3[0])*(30687.15**beta3[1]))
 
-pred_Nept=0
+pred_Nept = (beta3[0] + (beta3[1]*60190.03))
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
