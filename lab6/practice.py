@@ -19,11 +19,15 @@ beta3 = np.linalg.solve(normal_coef3, normal_vect3)
 
 # Replace the values of 0 with your predictions for the semi-major axes of Uranus and Neptune.
 
+a = beta3[1]
+
+c = np.exp(beta3[0])
+
+pred_Uran = c*30687.15**a
+pred_Nept = c*60190.03**a
 
 # pred_Uran = (beta3[0] + (beta3[1]*30687.15))
-pred_Uran = (((beta3[0])*(30687.15))**beta3[1])
 
-pred_Nept = (beta3[0] + (beta3[1]*60190.03))
 
 # print(beta3)
 print(pred_Uran)
