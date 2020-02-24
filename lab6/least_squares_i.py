@@ -138,9 +138,10 @@ beta3 = np.linalg.solve(normal_coef3, normal_vect3)
 
 # Replace the values of 0 with your predictions for the semi-major axes of Uranus and Neptune.
 
-pred_Uran = ((10**beta3[0])*(30687.15**beta3[1]))
 
-pred_Nept = (beta3[0] + (beta3[1]*60190.03))
+pred_Uran = (np.exp(beta3[0]))*30687.15**(beta3[1])
+
+pred_Nept = (np.exp(beta3[0]))*60190.03**(beta3[1])
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
