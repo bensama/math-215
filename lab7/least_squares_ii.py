@@ -73,7 +73,7 @@ import matplotlib.pyplot as plt
 
 # This function returns the row [1,cos(t),sin(t), cos(2*t), sin(2*t) , ... , cos(n*t), sin(n*t)] of our matrix X.
 def row_func(t,n):
-  L = [f(k) for k in range(1, n+1) for f in [np.cos, np.sin]]
+  L = [f(k*t) for k in range(1, n+1) for f in [np.cos, np.sin]]
   L.insert(0,1)
   return L
 
@@ -81,9 +81,12 @@ def row_func(t,n):
 
 # This function returns the matrix X, which we call the design matrix.
 
+
 def design_matrix(n):
-  # Put your code here.
-  return # Put your return value here.
+  L = [row_func(i, n) for i in range(1, n+1) for n in range(1, n+1)]
+  L.insert(0, 1)
+  x = np.array(L)
+  return x
 
 """**Problem 4**"""
 
