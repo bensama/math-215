@@ -81,34 +81,35 @@ def row_func(t,n):
 
 # This function returns the matrix X, which we call the design matrix.
 
-
 def design_matrix(n):
-  L = [row_func(i, n) for i in range(1, n+1) for n in range(1, n+1)]
-  L.insert(0, 1)
-  x = np.array(L)
-  return x
+  X = []
+  for k in range(len(T)):
+    L = row_func(T[k], n)
+    X.append(L)
+  return np.asarray(X)
 
 """**Problem 4**"""
 
-X2=0    # Replace the value of 0 with the NumPy array that is returned from the function call design_matrix(2).
+X2=design_matrix(2)    # Replace the value of 0 with the NumPy array that is returned from the function call design_matrix(2).
 
 """**Problem 5**"""
 
 # Replace all of the 0 values with the NumPy matrices and vectors requested in Problem 5.
 
-normal_coef2=0
+normal_coef2 = np.array(np.matmul(np.transpose(X2), X2))
 
-normal_vect2=0
+normal_vect2 = np.array(np.matmul(np.transpose(X2), Y))
 
-beta2=0
+beta2 = np.linalg.solve(normal_coef2, normal_vect2)
 
 """**Problem 6**"""
 
 # This is our function which approximates the signal strength when n=2.
 
 def f2(t):
-  # Put your code here.
-  return # Put your return value here.
+  x = np.asarray(row_func(t,2))
+  y = np.dot(beta2, x)
+  return y
 
 """**Problem 7**"""
 
@@ -116,31 +117,72 @@ def f2(t):
 
 """**Problem 8**"""
 
-MSE2=0    # Replace the 0 value with the mean square error you compute in Problem 8.
+MSE2 = (1/629)*((np.linalg.norm(np.dot(X2, beta2) - Y))**2)
 
 """**Problem 9**"""
 
 # Replace the 0 values with the values requested in Problem 9.  Remember to copy the decimal values from your practice notebook, not the formulas you used to compute them.
+X10 = design_matrix(10)
 
-MSE10=0
+normal_coef10 = np.array(np.matmul(np.transpose(X10), X10))
 
-pred10=0
+normal_vect10 = np.array(np.matmul(np.transpose(X10), Y))
+
+beta10 = np.linalg.solve(normal_coef10, normal_vect10)
+
+def f10(t):
+  x = np.asarray(row_func(t, 10))
+  y = np.dot(beta10, x)
+  return y
+
+MSE10 = (1/629)*((np.linalg.norm(np.dot(X10, beta10) - Y))**2)
+
+pred10= f10(0.105)
 
 """**Problem 10**"""
 
 # Replace the 0 values with the values requested in Problem 10.  Remember to copy the decimal values from your practice notebook, not the formulas you used to compute them.
+X100 = design_matrix(100)
 
-MSE100=0
+normal_coef100 = np.array(np.matmul(np.transpose(X100), X100))
 
-pred100=0
+normal_vect100 = np.array(np.matmul(np.transpose(X100), Y))
+
+beta100 = np.linalg.solve(normal_coef100, normal_vect100)
+
+
+def f100(t):
+  x = np.asarray(row_func(t, 100))
+  y = np.dot(beta100, x)
+  return y
+
+
+MSE100 = (1/629)*((np.linalg.norm(np.dot(X100, beta100) - Y))**2)
+
+pred100=f100(0.105)
 
 """**Problem 11**"""
 
 # Replace the 0 values with the values requested in Problem 11.  Remember to copy the decimal values from your practice notebook, not the formulas you used to compute them.
 
-MSE1000=0
+X1000 = design_matrix(1000)
 
-pred1000=0
+normal_coef1000 = np.array(np.matmul(np.transpose(X1000), X1000))
+
+normal_vect1000 = np.array(np.matmul(np.transpose(X1000), Y))
+
+beta1000 = np.linalg.solve(normal_coef1000, normal_vect1000)
+
+
+def f1000(t):
+  x = np.asarray(row_func(t, 1000))
+  y = np.dot(beta1000, x)
+  return y
+
+
+MSE1000 = (1/629)*((np.linalg.norm(np.dot(X100, beta100) - Y))**2)
+
+pred1000 = f1000(0.105)
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
