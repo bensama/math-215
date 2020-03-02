@@ -24,17 +24,17 @@ except ImportError:
 
 # Enter your first and last names in between the quotation marks.
 
-first_name="Your first name goes here"
+first_name="Ben"
 
-last_name="Your last name goes here"
+last_name="Paine"
 
 # Enter your Math 215 section number in between the quotation marks. 
 
-section_number="Your Math 215 section number goes here"  
+section_number="004"  
 
 # Enter your BYU NetID in between the quotation marks.  NOT YOUR BYU ID NUMBER! 
 
-BYUNetID="Your BYU NetID goes here"
+BYUNetID="bpaine"
 
 """**Import NumPy**"""
 
