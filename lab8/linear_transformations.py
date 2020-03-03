@@ -45,8 +45,8 @@ import numpy as np
 # This function reads in a vector and outputs the transformed vector Ax.
 
 def transform(x):
-  # Put your code here.
-  return # Put your return value here.
+  a = np.array([[2, 1], [1, -3], [0, 1]])
+  return np.array(np.dot(a, x))
 
 """**Downloading and visualizing our data**
 
@@ -85,36 +85,42 @@ showplot(cougar)
 # This function should take a matrix of coordinates, and output a matrix which corresponds to the image that has been stetched in the 
 # horizantal direction by a factor of a and in the verticle direction by a factor of b.
 
-def stretch(image,a,b): 
-  # Put your code here.
-  return # Put your return value here.
+def stretch(image, a, b):
+  X = transform(image)
+  Y = np.array([[a, 0], [0, b]])
+  return np.array(np.dot(Y, image))
 
 # This function should take a matrix of coordinates, and output a matrix which corresponds to the image that has been sheared by a horizantal factor of a and 
 # a vertical factor of b
 
-def shear(image,a,b): 
-  # Put your code here.
-  return # Put your return value here.
+def shear(image, a, b):
+  X = transform(image)
+  Y = np.array([[1, a], [b, 1]])
+  return np.array(np.dot(Y, image))
 
 # This function should take a matrix of coordinates, and output a matrix which corresponds to the image that has been reflected in the 
 # line spanned by the vector [a,b]^T
 
-def reflect(image,a,b): 
-  # Put your code here.
-  return # Put your return value here.
+def reflect(image, a, b):
+  X = transform(image)
+  Y = np.array([[(a**2 - b**2), 2*(a*b)], [2*(a*b), (b**2 - a**2)]])
+  Z = np.array((1/(a**2+b**2))*Y)
+  return np.array(np.dot(Z, image))
 
 # This function should take a matrix of coordinates, and output a matrix which corresponds to the image that has been rotated in the 
 # counterclockwise direction by an angle of theta radians.
 
-def rotate(image,theta): 
-  # Put your code here.
-  return # Put your return value here.
+def rotate(image, theta):
+  X = transform(image)
+  Y = np.array([[np.cos(theta), (np.sin(theta)*-1)],[np.sin(theta), np.cos(theta)]])
+  return np.array(np.dot(Y, image))
 
 """**Problem 3**"""
 
 iden=np.array([[1,0],[0,1]]) # The identity matrix may be helpful here.
 
-comp_matrix=0 # Put the transformation matrix which results for the sequence of transformations here.
+comp_matrix = stretch(reflect(rotate(stretch(iden, 2, 0), 45), 3, 2), 0, .5)
+
 
 """The following code can be copied to your practice notebook and used to visualize the linear transformations in the following questions."""
 
