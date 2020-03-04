@@ -119,8 +119,7 @@ def rotate(image, theta):
 
 iden=np.array([[1,0],[0,1]]) # The identity matrix may be helpful here.
 
-comp_matrix = stretch(reflect(rotate(stretch(iden, 2, 0), 45), 3, 2), 0, .5)
-
+comp_matrix = stretch(rotate(reflect(stretch(iden, 1/2, 1), 1, -3/2), np.pi/4), 1, 2)
 
 """The following code can be copied to your practice notebook and used to visualize the linear transformations in the following questions."""
 
@@ -150,9 +149,10 @@ def plot_transformation(mat):
 
 """**Problem 4**"""
 
-def area(A): 
-  # Put your code here.
-  return # Put your return value here.
+def area(A):
+  a = np.linalg.norm(A[0, :])
+  b = np.linalg.norm(A[1, :])
+  return a*b*np.sin(np.arccos(np.dot(A[0, :], A[1, :])/np.dot(a, b)))
 
 """**Problem 5**"""
 
