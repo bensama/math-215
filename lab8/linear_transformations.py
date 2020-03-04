@@ -158,13 +158,18 @@ def area(A):
 
 # Save the values of the determinants of the matrices A,B,C, and D from Problem 5.
 
-detM=0
+M = np.array([[2, 1], [-2, 4]])
+N = np.array([[3, 1], [2, -1]])
+P = np.array([[-1, 2], [-1, -1]])
+Q = np.array([[0.6, -0.5], [0.2, -0.5]])
 
-detN=0
+detM=area(M)
 
-detP=0
+detN=area(N)
 
-detQ=0
+detP=area(P)
+
+detQ=area(Q)
 
 """**Problem 6**"""
 
