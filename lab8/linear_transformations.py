@@ -163,13 +163,13 @@ N = np.array([[3, 1], [2, -1]])
 P = np.array([[-1, 2], [-1, -1]])
 Q = np.array([[0.6, -0.5], [0.2, -0.5]])
 
-detM=area(M)
+detM = np.linalg.det(np.array([[2, 1], [-2, 4]]))
 
-detN=area(N)
+detN = np.linalg.det(np.array([[3, 1], [2, -1]]))
 
-detP=area(P)
+detP = np.linalg.det(np.array([[-1, 2], [-1, -1]]))
 
-detQ=area(Q)
+detQ = np.linalg.det(np.array([[0.6, -0.5], [0.2, -0.5]]))
 
 """**Problem 6**"""
 
