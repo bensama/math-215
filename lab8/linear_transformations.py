@@ -175,21 +175,31 @@ detQ = np.linalg.det(np.array([[0.6, -0.5], [0.2, -0.5]]))
 
 # Save the values of the matrix A and the area of the ellipse from Problem 6.
 
-ellipse_matrix=np.array([[0,0],[0,0]])
+c = np.array([[0, 1], [1, 0]])
+e = np.array([[1.5, 1], [0.5, -2.75]])
+a = np.linalg.solve(c, e)
 
-ellipse_area=0
+ellipse_matrix = e
+
+#Area of E = | det A| · (Area of C).
+ellipse_area = area(e) * np.pi
 
 """**Problem 7**"""
 
 # Save the values of the determinants of the matrices B1,B3,B6, and B0 from Problem 5.
 
-detB1=0
+B1 = np.array([[4,3], [2,6]])
+B3 = np.array([[1.5,3], [2, 6]])
+B6 = np.array([[1.00001,3], [2, 6]])
+B0 = np.array([[1,3], [2,6]])
 
-detB3=0
+detB1=np.linalg.det(B1)
 
-detB6=0
+detB3=np.linalg.det(B3)
 
-detB0=0
+detB6 = np.linalg.det(B6)
+
+detB0 = np.linalg.det(B0)
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
