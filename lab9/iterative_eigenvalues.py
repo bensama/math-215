@@ -112,14 +112,18 @@ x_vect_4 = norm_approx_gen(y, y_0, 4)[0]
 # This function returns the number of subscribers to the different streaming services after month k.
 
 def subscriber_vals(x_0,k):
-  # Put your code here.
-  return # Put your return value here.
+  P = np.array([[0.7, 0.2],[0.3, 0.8]])
+  for i in range(k):
+    x_0 = P@x_0
+  return x_0
 
 """**Problem 8**"""
 
 # Replace all of the 0 values with the value requested in Problem 8.
 
-netflix_subs6=0
+z_0 = np.array([[0.6], [0.4]])
+
+netflix_subs6 = subscriber_vals(z_0,6)
 
 """**Problem 9**"""
 
