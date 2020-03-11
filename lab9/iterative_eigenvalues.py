@@ -101,9 +101,10 @@ def ray_quotient(M,x_0,k):
 # Replace all of the 0 values with the vectors requested in Problem 6.
 
 y = np.array([[3, 2, -2], [-1, 1, 4], [3, 2, -5]])
-y_0 = np.array([[1], [1], [1]])
+y_0 = np.array([1, 1, 1])
 
 x_vect_3 = norm_approx_gen(y, y_0, 3)[0]
+# x_vect_3 = np.array([[0.36538462],[1.],[-0.61538462]])
 
 x_vect_4 = norm_approx_gen(y, y_0, 4)[0]
 
@@ -121,7 +122,7 @@ def subscriber_vals(x_0,k):
 
 # Replace all of the 0 values with the value requested in Problem 8.
 
-z_0 = np.array([[0.6], [0.4]])
+z_0 = np.array([0.6, 0.4])
 
 netflix_subs6 = subscriber_vals(z_0,6)
 
