@@ -122,15 +122,13 @@ def subscriber_vals(x_0,k):
 
 # Replace all of the 0 values with the value requested in Problem 8.
 
-z_0 = np.array([0.6, 0.4])
-
-netflix_subs6 = subscriber_vals(z_0,6)
+netflix_subs6 = subscriber_vals(np.array([0.6, 0.4]), 6)[1]
 
 """**Problem 9**"""
 
 # Replace all of the 0 values with the matrix/vector/value requested in Problem 9.
 
-trans_matrix=0
+trans_matrix = np.array([[0.8, 0.5, 0.3, 0.2], [0.05, 0.2, 0.1, 0.1], [0.1, 0.1, 0.3, 0.1], [0.05, 0.2, 0.3, 0.6]])
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
