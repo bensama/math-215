@@ -66,7 +66,7 @@ nx.draw(G,node_size=75)
 
 def adj_matrix(n, edge_list):
   a = np.zeros((n, n))
-  for i in range(0, n*2):
+  for i in range(len(edge_list)):
     a[edge_list[i, 0], edge_list[i, 1]] += 1
   return a
 
@@ -87,13 +87,18 @@ def degree_cent(n,edge_list):
 
 # Save the value you obtain in Problem 3 as the variable top_indegree.
 
-top_indegree=-1
+top_indegree = np.flip(degree_cent(499, webpage_data).argsort(), 0)[0]
 
 """**Problem 4**"""
 
 def stoch_mat(A):
-  # Put your code here.
-  return # Put your return value here.
+  n = len(A[0,:])
+  A_T = np.transpose(A)
+  A_norm = np.zeros((n,n))
+  for j in range(n):
+    for i in range(n):
+      A_norm[i,j] = (A_T[i,j] * 1.0) / np.sum(A_T[:,j])
+  return A_norm
 
 # Use A2 to test your function. 
 
@@ -109,20 +114,29 @@ A2= np.array([[0,1,0,0,0,0,0,0],
 """**Problem 5**"""
 
 def stoch_eig(P,k):
-  # Put your code here.
-  return # Put your return value here.
+  n = len(P)
+  x_0 = np.zeros((n))
+  for i in range(n):
+    x_0[i] = 1.0/n 
+  old_x = x_0
+  for i in range(k):
+    new_x = P @ old_x
+    old_x = new_x
+  return new_x
 
 """**Problem 6**"""
 
 def PageRank_cent(n,edge_list,k):
-  # Put your code here.
-  return # Put your return value here.
+  A=adj_matrix(n,edge_list)
+  P=stoch_mat(A)
+  PageRank_vect=stoch_eig(P,k)
+  return PageRank_vect
 
 """**Problem 7**"""
 
 # Save the value you obtain in Problem 7 as the variable top_PageRank.
 
-top_PageRank=-1
+top_PageRank = np.flip(PageRank_cent(499, webpage_data, 100).argsort(), 0)[0]
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
