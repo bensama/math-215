@@ -47,16 +47,18 @@ import pandas as pd
 # This function returns the coordinate of x projected to the line spanned by u.
 
 def projection_coordinate(u,x):
-  # Put your code here.
-  return # Put your return value here.
+  p = np.dot(u,x)
+  return p
 
 """**Problem 2**"""
 
 # This function returns the coordinates of the points in X projected to the plane spanned by u1 and u2.
 
 def projection_2D(u1,u2,X):
-  # Put your code here.
-  return # Put your return value here.
+  U = np.zeros((2,len(u1)))
+  U[0,:] = u1
+  U[1,:] = u2
+  return U@X
 
 """**Downloading dataset**
 
@@ -82,7 +84,7 @@ Bob=df.loc[df[100]<0].drop(columns=100).values[1,:]
 
 # Save the value of the covariance matrix you obtain in Problem 3 as the variable W.
 
-W=0
+W=(1/(len(X_total)-1))*(np.dot(X_total,np.transpose(X_total)))
 
 """**Problem 4**"""
 
