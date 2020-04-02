@@ -106,21 +106,21 @@ u3=P[:,2]
 
 total_variance=np.sum(L)
 
-reduced_variance=np.sum(projection_2D(u1,u2,L))
+reduced_variance=L1+L2
 
-relative_variance=total_variance/reduced_variance
+relative_variance=reduced_variance/total_variance
 
 """**Problem 6**"""
 
 # Save the projected data points from Problem 6 here.
 
-X_neg_2D=0
+X_neg_2D=projection_2D(u1, u2, X_neg)
 
-X_pos_2D=0
+X_pos_2D=projection_2D(u1, u2, X_pos)
 
-Alice_2D=0
+Alice_2D=projection_2D(u1, u2, Alice)
 
-Bob_2D=0
+Bob_2D=projection_2D(u1, u2, Bob)
 
 """**Problem 7**
 
@@ -150,9 +150,9 @@ def plot_data(Z1=[],Z2=[],Z3=[],Z4=[]):
 
 # Save the values of your predictions below.  +1 indicates the individual is predicted to develop this type of cancer (testing positive), while -1 indicates they are predicted not to (testing negative).
 
-Alice_prediction=0
+Alice_prediction=1
 
-Bob_prediction=0
+Bob_prediction=-1
 
 """**STOP!  BEFORE YOU SUBMIT THIS LAB:**  Go to the "Runtime" menu at the top of this page, and select "Restart and run all".  If any of the cells produce error messages, you will either need to fix the error(s) or delete the code that is causing the error(s).  Then use "Restart and run all" again to see if there are any new errors.  Repeat this until no new error messages show up.
 
