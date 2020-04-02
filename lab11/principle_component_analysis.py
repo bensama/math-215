@@ -84,29 +84,31 @@ Bob=df.loc[df[100]<0].drop(columns=100).values[1,:]
 
 # Save the value of the covariance matrix you obtain in Problem 3 as the variable W.
 
-W=(1/(len(X_total)-1))*(np.dot(X_total,np.transpose(X_total)))
+W=(1/999)*(X_total@np.transpose(X_total))
 
 """**Problem 4**"""
 
 # Save the eigenvalues and eigenvectors you produced for Problem 4 here.
 
-L1=0
-L2=0
-L3=0
+L, P = np.linalg.eig(W)
 
-u1=0
-u2=0
-u3=0
+L1=L[0]
+L2=L[1]
+L3=L[2]
+
+u1=P[:,0]
+u2=P[:,1]
+u3=P[:,2]
 
 """**Problem 5**"""
 
 # Save the variance values you produced for Problem 5 here.
 
-total_variance=0
+total_variance=np.sum(L)
 
-reduced_variance=0
+reduced_variance=np.sum(projection_2D(u1,u2,L))
 
-relative_variance=0
+relative_variance=total_variance/reduced_variance
 
 """**Problem 6**"""
 
