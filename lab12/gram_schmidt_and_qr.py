@@ -46,7 +46,7 @@ import numpy as np
 
 def orthogonal_check(a,b):
   cutoff = 1e-12
-  if np.dot(a,b)<cutoff:
+  if np.dot(a,b)<cutoff and np.dot(a,b) >= 0:
     return True
   else:
     return False
@@ -62,10 +62,10 @@ orthogonal_check(a,b)
 
 # This function reads in a list of vectors and checks whether they form an orthogonal set. Orthcheck should be a Boolean value (True or False).
 
-def orth_set_check(vect_set):
-  for i in range(len(vect_set)):
-    for j in range(i+1, len(vect_set)):
-      if orthogonal_check(vect_set[i],vect_set[j]) != True:
+def orth_set_check(A):
+  for i in range(1, len(A)):
+   for j in range(0, len(A)):
+    if (i != j and orthogonal_check(A[i], A[j]) == False):
         return False
   return True
 
@@ -81,8 +81,8 @@ orth_set_check(p)
 # This function accepts a vector and returns a unit vector in the same direction.
 
 def normalize(v):
-  # Put your code here.
-  return # Put your return value here.
+  m = np.linalg.norm(v)
+  return v/m
 
 """Check your function:"""
 
@@ -93,8 +93,8 @@ normalize(np.array([1,1,1,1]))
 # This function accepts two vectors a and b and returns the projection of a onto b.
 
 def proj(a,b):
-  # Put your code here.
-  return # Put your return value here.
+  p = (np.dot(a,b) / np.dot(b,b))*b
+  return p
 
 """Check your function:"""
 
@@ -109,8 +109,12 @@ proj(a,b)
 def gram_schmidt(V):
   X=V.copy()
   n=len(V)
-  # Put your code here which should replace the vectors in X one at a time with orthogonal vectors.
-  return # Put your return value here.
+  for i in range(1, n):
+    for j in range(0, i):
+      X[i] = X[i] - proj(V[i], X[j])
+  for i in range(n):
+    X[i] = normalize(X[i])
+  return X
 
 """Check your function:"""
 
@@ -124,8 +128,10 @@ A
 # This function accepts a matrix A as a 2D NumPy Array, and returns two new matrices Q and R.
 
 def QR_decomposition(A):
-  # Put your code here.
-  return # Put your return value here.  The return line should look like:  return Q,R
+  B = np.transpose(A)
+  Q = np.transpose(gram_schmidt(B))
+  R = np.dot(np.transpose(Q), A)
+  return Q, R
 
 """Check your function:"""
 
@@ -155,8 +161,9 @@ def back_substitution(U,b):
 # This function accepts an invertible matrix A and a vector b, solves Ax=b for x.
 
 def QR_solver(A,b):
-  # Put your code here.
-  return # Put your return value here.
+  Q,R = QR_decomposition(A)
+  Z = np.transpose(Q)@b
+  return back_substitution(R,Z)
 
 A=np.array([[3,1,-2],[1.5,2,-5],[2,-4,1]])
 b=np.array([1.1,3,-2])
