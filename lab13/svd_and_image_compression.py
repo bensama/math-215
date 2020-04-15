@@ -56,17 +56,20 @@ def sigma(m,n,s):
 # This function accepts arrays u,s, and v_t, and returns the corresponing array A.
 
 def reconstructed_array(u,s,v_t):
-  m, n = np.shape(u)
-  x = sigma(m, n, s)
-  return u@x@v_t
+  A = u@sigma(len(u[0,:]),len(v_t[:,0]),s)@v_t
+  return A
 
 """**Problem 3**"""
 
 # This function accepts an array A and an integer k, and returns a rank k approximation of A as computed by an SVD.
 
 def lower_rank(A,k):
-  # Put your code here.
-  return # Put your return value here.
+  u,s,v_t = np.linalg.svd(A)
+  u_k = u[:,:k]
+  s_k = sigma(len(u[0,:]),len(v_t[:,0]),s)[:k,:k]
+  v_k = v_t[:k,:]
+  A_k = u_k@s_k@v_k
+  return A_k
 
 """**Downloading image data**
 
